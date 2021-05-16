@@ -1,10 +1,7 @@
 # Discovering and graphing network flows with ntop, MariaDB, LucidChart
 
-## Tool Comparison Video
+## Tool Comparison and LucidChart Creation Video Tutorial
 [![Discovery Tool Comparison](http://img.youtube.com/vi/rQYM_lNA2Ak/0.jpg)](http://www.youtube.com/watch?v=rQYM_lNA2Ak)
-
-## Demo of ntopng > MariaDB > LucidChart
-[![Auto LucidChart](http://img.youtube.com/vi/Em6crXrn614/0.jpg)](http://www.youtube.com/watch?v=Em6crXrn614)
 
 
 # Why
