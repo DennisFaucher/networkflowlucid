@@ -12,7 +12,7 @@ Mapping the network flows between servers, VMs, and applications can be very use
 
 # How
 
-![How](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/How50.jpeg)
+![How](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/How25.jpeg)
 
 My test case is my Home Lab. My Home Lab has two VMware ESXi servers (Intel NUC, Raspberry Pi 4) and one Linux laptop. I wanted to collect network flows between VMs and physical hosts to see which apps were using the most network bandwidth. This requires 
 # Thank You
