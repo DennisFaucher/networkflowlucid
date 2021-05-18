@@ -147,6 +147,8 @@ Once you have downloaded the template, create a shape row for each of the hosts 
 
 Below the rows for shapes, create rows for the flow lines. These rows are identical except for the source, destination, and text (port number) columns. I pasted the SQL output into Excel split into columns based on the pipe and space being column separators. I could them paste columns of source, destination, and port right in to the CSV table. Once you have placed the SQL output unto the correct columns delete any extraneous information you may have pasted into the CSV file and save.
 
+![Lucid Lines](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20CSV%20Flows.png)
+
 Import this CSV file as data to create a process diagram and you will see black host circles conected by black port lines. Move the hosts around in the chart as needed for readability and the lines will follow. 
 
 # Thank You
