@@ -34,12 +34,30 @@ Now that any host can see all packets, it's time to install ntop(ng) on one of t
 
 #### Install MariaDB
 
+````bash
+sudo apt install mariadb
+sudo systemctl start mariadb
+sudo systemctl status mariadb (check for any issues and fix)
+sudo systemctl enable mariadb
+````
+
 #### Install ntop(ng)
 
 ````bash
 sudo apt install ntopng
 sudo vi /etc/ntopng.conf
+(Change -i to your Ethernet device. Add the two MySQL(MariaDB) lines changing the IP address to your MariaDB IP address)
+    -i=ens192
+    # Dump flows to MySQL
+    --dump-flows=mysql;192.168.1.65;ntopng;flows;ntopng;ntopng
 
+````
+ntopng creates the flows database and the flowsv4 & flowsv6 tables in MariaDB on startup. You do not need to do anything. For the life of me, I cannot remember if I needed to create the ntopng user in MariaDB with a password of ntopng. If I did, these would be the commands:
+
+````SQL
+sudo mysql -u root -p
+CREATE USER 'ntopng'@localhost IDENTIFIED BY 'ntopng';
+exit;
 ````
 
 ## Write the Flows to a Database
