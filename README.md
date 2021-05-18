@@ -141,7 +141,9 @@ After playing with the different LucidChart drawing types that support CSV impor
 
 ![Lucid Import Screen](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20Import%20Screen.png)
 
+Once you have downloaded the template, create a shape row for each of the hosts in the output of your SQL command. Each shape needs a unique ID in LucidChart, so I used the last octet of the host IP address for the shape ID.
 
+![Lucid Shapes](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20CSV%20Hosts.png)
 
 
 # Thank You
