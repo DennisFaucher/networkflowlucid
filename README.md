@@ -81,7 +81,7 @@ You can find a copy of my ntopng.conf [file](https://github.com/DennisFaucher/ne
 
 ![SQL Logo](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/SQL.png)
 
-It was time to dust off my rusty SQL skills and to start poking at the MariaDB ntop records to looks for the top flows. 
+It was time to dust off my rusty SQL skills and to start poking at the MariaDB ntop records to looks for the top flows. After lots of trial and error, this SQL statement gave me what I wanted:
 
 ````SQL
 use ntopng
@@ -104,6 +104,29 @@ order by out_bytes desc limit 10;
 | 192.168.1.65 |    48718 | 192.168.1.66  |     8086 | 418,736,680 | 89,940,248     |
 | 192.168.1.65 |    60818 | 192.168.1.71  |     8181 | 4,516,705   | 10,383,015     |
 +--------------+----------+---------------+----------+-------------+----------------+
+````
+
+I filtered out any flows coming from 192.161.1.51 (My WiFi network) and kept only the flows staying within my Home Lab network (192.168.1.%). Some of the interesting busy ports you see are:
+
+* 902: NFS destination for my backup server
+* 443: vCenter
+* 9100, 9091: Prometheus (Grafana)
+* 8086: InfluxDB (Grafana)
+* 8181: Tautulli Plex Stats
+
+If you are ever unsure what process has a numbered port open, just run the "lsof -i" command on your Linux host:
+
+````bash
+sudo lsof -i | grep 8086
+influxd      9189        influxdb   84u  IPv6 59719059      0t0  TCP localhost:8086->localhost:42488 (ESTABLISHED)
+influxd      9189        influxdb   85u  IPv6 59571748      0t0  TCP ubuntu-nuc.fios-router.home:8086->photon-arm.fios-router.home:53650 (ESTABLISHED)
+influxd      9189        influxdb   89u  IPv6 59519210      0t0  TCP ubuntu-nuc.fios-router.home:8086->rpios.fios-router.home:60260 (ESTABLISHED)
+influxd      9189        influxdb  135u  IPv6 59572394      0t0  TCP ubuntu-nuc.fios-router.home:8086->medialinux.fios-router.home:44318 (ESTABLISHED)
+influxd      9189        influxdb  146u  IPv6 61668069      0t0  TCP ubuntu-nuc.fios-router.home:8086->192.168.1.151:54665 (ESTABLISHED)
+influxd      9189        influxdb  159u  IPv6 61962153      0t0  TCP localhost:8086->localhost:39084 (ESTABLISHED)
+influxd      9189        influxdb  686u  IPv6   123187      0t0  TCP *:8086 (LISTEN)
+telegraf     9432        telegraf    8u  IPv4 59720637      0t0  TCP localhost:42488->localhost:8086 (ESTABLISHED)
+grafana-s  353242         grafana   18u  IPv4 61962152      0t0  TCP localhost:39084->localhost:8086 (ESTABLISHED)
 ````
 
 # Thank You
