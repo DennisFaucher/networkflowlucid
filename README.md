@@ -75,9 +75,31 @@ CREATE USER 'ntopng'@localhost IDENTIFIED BY 'ntopng';
 exit;
 ````
 
-You can find a copy of my ntopng.conf [file](https://github.com/DennisFaucher/networkflowlucid/blob/main/ntopng.conf) in this repo. My only difference is that I changed the port the ntopng web interface runs on from 3000 to 4000.
+You can find a copy of my ntopng.conf [file](https://github.com/DennisFaucher/networkflowlucid/blob/main/ntopng.conf) in this repo. My only difference is that I changed the port the ntopng web interface runs on from 3000 to 4000. Also, my MariaDB server is on a different host than localhost.
 
 ## Query the Database for the Top Flows
 
-My test case is my Home Lab. My Home Lab has two VMware ESXi servers (Intel NUC, Raspberry Pi 4) and one Linux laptop. I wanted to collect network flows between VMs and physical hosts to see which apps were using the most network bandwidth. This requires 
+![SQL Logo](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/SQL.png)
+
+It was time to dust off my rusty SQL skills and to start poking at the MariaDB ntop records to looks for the top flows. 
+
+````SQL
+use ntopng
+SELECT INET_NTOA(ip_src_addr) as "SRC_IP", l4_src_port as "SRC_PORT", INET_NTOA(ip_dst_addr) as "DST_IP", l4_dst_port as "DST_PORT", format(SUM(in_bytes),0) as "IN", format(SUM(out_bytes),0) as "OUT" from flowsv4 where INET_NTOA(ip_src_addr) != "192.168.1.151" and INET_NTOA(ip_dst_addr) != "192.168.1.151" and INET_NTOA(ip_dst_addr) LIKE "192.168.1.%" group by l4_dst_port  order by out_bytes desc limit 10;
++--------------+----------+---------------+----------+-------------+----------------+
+| SRC_IP       | SRC_PORT | DST_IP        | DST_PORT | IN          | OUT            |
++--------------+----------+---------------+----------+-------------+----------------+
+| 192.168.1.69 |    57668 | 192.168.1.240 |      902 | 188,567,181 | 28,614,544,156 |
+| 192.168.1.66 |    55846 | 192.168.1.55  |      443 | 559,914,960 | 2,351,076,647  |
+| 192.168.1.66 |    45152 | 192.168.1.51  |     9100 | 3,564,870   | 36,772,742     |
+| 192.168.1.66 |     8086 | 192.168.1.51  |    38324 | 181,208     | 1,172,396      |
+| 192.168.1.66 |    52326 | 192.168.1.51  |     9091 | 2,122,212   | 15,249,382     |
+| 192.168.1.66 |     8086 | 192.168.1.65  |    48718 | 695,958     | 2,436,358      |
+| 192.168.1.66 |     8086 | 192.168.1.65  |    48604 | 3,463,442   | 7,196,070      |
+| 192.168.1.51 |    32400 | 192.168.1.71  |    49910 | 3,818,437   | 1,267,671      |
+| 192.168.1.65 |    48718 | 192.168.1.66  |     8086 | 418,736,680 | 89,940,248     |
+| 192.168.1.65 |    60818 | 192.168.1.71  |     8181 | 4,516,705   | 10,383,015     |
++--------------+----------+---------------+----------+-------------+----------------+
+````
+
 # Thank You
