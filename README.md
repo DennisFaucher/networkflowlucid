@@ -46,11 +46,22 @@ sudo systemctl enable mariadb
 ````bash
 sudo apt install ntopng
 sudo vi /etc/ntopng.conf
-(Change -i to your Ethernet device. Add the two MySQL(MariaDB) lines changing the IP address to your MariaDB IP address)
+    (Change -i to match your Ethernet device.)
     -i=ens192
+sudo systemctl start ntopng
+sudo systemctl status ntopng (check for any issues and fix)
+sudo systemctl enable ntopng
+````
+
+#### Write the Flows to MariaDB
+
+````bash
+sudo vi /etc/ntopng.conf
+    (Add the two MySQL(MariaDB) lines changing the IP address to your MariaDB IP address)
     # Dump flows to MySQL
     --dump-flows=mysql;192.168.1.65;ntopng;flows;ntopng;ntopng
-
+sudo systemctl restart ntopng
+sudo systemctl status ntopng (check for any issues and fix)
 ````
 ntopng creates the flows database and the flowsv4 & flowsv6 tables in MariaDB on startup. You do not need to do anything. For the life of me, I cannot remember if I needed to create the ntopng user in MariaDB with a password of ntopng. If I did, these would be the commands:
 
@@ -59,8 +70,6 @@ sudo mysql -u root -p
 CREATE USER 'ntopng'@localhost IDENTIFIED BY 'ntopng';
 exit;
 ````
-
-## Write the Flows to a Database
 
 ## Query the Database for the Top Flows
 
