@@ -30,6 +30,18 @@ There are many tools to capture network packets. I found ntop the easiest to use
 
 ![Security Settings](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/vSwitch%20Security%20Settings.png)
 
+Now that any host can see all packets, it's time to install ntop(ng) on one of the hosts and have ntopng write to MariaDB. I chose one of my Ubuntu VMs. The steps are pretty simple:
+
+#### Install MariaDB
+
+#### Install ntop(ng)
+
+````bash
+sudo apt install ntopng
+sudo vi /etc/ntopng.conf
+
+````
+
 ## Write the Flows to a Database
 
 ## Query the Database for the Top Flows
