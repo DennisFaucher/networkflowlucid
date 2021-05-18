@@ -34,7 +34,9 @@ Now that any host can see all packets, it's time to install ntop(ng) on one of t
 
 #### Install MariaDB
 
-````sh
+![MariaDB](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/MariaDB.png)
+
+````bash
 sudo apt install mariadb
 sudo systemctl start mariadb
 sudo systemctl status mariadb (check for any issues and fix)
@@ -43,7 +45,9 @@ sudo systemctl enable mariadb
 
 #### Install ntop(ng)
 
-````sh
+![ntop](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/ntop.png)
+
+````bash
 sudo apt install ntopng
 sudo vi /etc/ntopng.conf
     (Change -i to match your Ethernet device.)
