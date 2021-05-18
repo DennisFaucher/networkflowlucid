@@ -145,7 +145,7 @@ Once you have downloaded the template, create a shape row for each of the hosts 
 
 ![Lucid Shapes](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20CSV%20Hosts.png)
 
-Below the rows for shapes, create rows for the flow lines. These rows are identical except for the source, destination, and text (port number) columns. I pasted the SQL output into Excel split into columns based on the pipe and space being column separators. I could them paste columns of source, destination, and port right in to the CSV table. Once you have placed the SQL output unto the correct columns delete any extraneous information you may have pasted into the CSV file and save.
+Below the rows for shapes, create rows for the flow lines. These rows are identical except for the source, destination, and text (port number) columns. I pasted the SQL output into Excel split into columns based on the pipe and space being column separators. I could them paste columns of source, destination, and port right in to the CSV table. Once you have placed the SQL output unto the correct columns delete any extraneous information you may have pasted into the CSV file and save. (Feel free to use my [CSV file](https://github.com/DennisFaucher/networkflowlucid/blob/main/LucidChart%20Input%20-%20Home%20Lab%20Flows.csv) to test with)
 
 ![Lucid Lines](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20CSV%20Flows.png)
 
