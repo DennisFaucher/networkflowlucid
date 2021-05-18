@@ -14,5 +14,25 @@ Mapping the network flows between servers, VMs, and applications can be very use
 
 ![How](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/How25.jpeg)
 
+## Capture the Network Flows
+
+There are many tools to capture network packets. I found ntop the easiest to use and ntop has database-writing built in. If you want ntop to see all packets and not just the packets destined fo the host ntop is running on, you need to first place your network switch in Promiscous Mode. I placed the Standard vSwitch in my two ESXI hosts in Promiscous Mode with these steps:
+
+* Select a host in the vSphere Web Client
+* Select the Configure tab
+* Select Virtual Switches
+* Select Edit for a standard vSwitch
+* Select the Security section
+* Change all settings to Accept
+* Select OK
+
+![vSwitch](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/vSwitch.png)
+
+![Security Settings](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/vSwitch%20Security%20Settings.png)
+
+## Write the Flows to a Database
+
+## Query the Database for the Top Flows
+
 My test case is my Home Lab. My Home Lab has two VMware ESXi servers (Intel NUC, Raspberry Pi 4) and one Linux laptop. I wanted to collect network flows between VMs and physical hosts to see which apps were using the most network bandwidth. This requires 
 # Thank You
