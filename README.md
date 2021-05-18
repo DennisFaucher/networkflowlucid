@@ -114,7 +114,7 @@ I filtered out any flows coming from 192.161.1.51 (My WiFi network) and kept onl
 * 8086: InfluxDB (Grafana)
 * 8181: Tautulli Plex Stats
 
-If you are ever unsure what process has a numbered port open, just run the "lsof -i" command on your Linux host:
+If you are ever unsure what process has a numbered port open, just run the "lsof -i" command on your host:
 
 ````bash
 sudo lsof -i | grep 8086
@@ -128,5 +128,17 @@ influxd      9189        influxdb  686u  IPv6   123187      0t0  TCP *:8086 (LIS
 telegraf     9432        telegraf    8u  IPv4 59720637      0t0  TCP localhost:42488->localhost:8086 (ESTABLISHED)
 grafana-s  353242         grafana   18u  IPv4 61962152      0t0  TCP localhost:39084->localhost:8086 (ESTABLISHED)
 ````
+
+## Create Automagic LucidCharts
+
+![LucidChart](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid.png)
+
+LucidChart (and the free Draw.IO) allow the import of CSV files to automatically create diagrams. They even provide CVS templates. I have a license to LucidChart through work, so I went that route.
+
+### Get the CSV Import File Ready
+
+After playing with the different LucidChart drawing types that support CSV import (Data Linking, Entity Relationship, Org Chart, Process Diagram, Smart Containers, Sticky Notes), I found that the Process Diagram was the closest to the network flow diagram I was after.
+
+
 
 # Thank You
