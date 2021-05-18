@@ -149,6 +149,8 @@ Below the rows for shapes, create rows for the flow lines. These rows are identi
 
 ![Lucid Lines](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20CSV%20Flows.png)
 
-Import this CSV file as data to create a process diagram and you will see black host circles conected by black port lines. Move the hosts around in the chart as needed for readability and the lines will follow. 
+Import this CSV file as data to create a process diagram and you will see black host circles conected by black port lines. Move the hosts around in the chart as needed for readability and the lines will follow. Format to your liking and you should have a flow diagram like mine.
 
 # Thank You
+
+Thank you for taking the time to read this post. I learned quite a bit working through this process and am sharing to make the process easier for others. I welcome any feedback, questions, or areas for improvement.
