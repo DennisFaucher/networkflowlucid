@@ -75,6 +75,8 @@ CREATE USER 'ntopng'@localhost IDENTIFIED BY 'ntopng';
 exit;
 ````
 
+You can find a copy of my ntopng.conf [file](https://github.com/DennisFaucher/networkflowlucid/blob/main/ntopng.conf) in this repo. My only difference is that I changed the port the ntopng web interface runs on from 3000 to 4000.
+
 ## Query the Database for the Top Flows
 
 My test case is my Home Lab. My Home Lab has two VMware ESXi servers (Intel NUC, Raspberry Pi 4) and one Linux laptop. I wanted to collect network flows between VMs and physical hosts to see which apps were using the most network bandwidth. This requires 
