@@ -131,7 +131,7 @@ grafana-s  353242         grafana   18u  IPv4 61962152      0t0  TCP localhost:3
 
 ## Create Automagic LucidCharts
 
-![LucidChart](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid.png)
+![LucidChart Flows](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20Flow.png)
 
 LucidChart (and the free Draw.IO) allow the import of CSV files to automatically create diagrams. They even provide CVS templates. I have a license to LucidChart through work, so I went that route.
 
