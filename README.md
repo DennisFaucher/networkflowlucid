@@ -85,7 +85,11 @@ It was time to dust off my rusty SQL skills and to start poking at the MariaDB n
 
 ````SQL
 use ntopng
-SELECT INET_NTOA(ip_src_addr) as "SRC_IP", l4_src_port as "SRC_PORT", INET_NTOA(ip_dst_addr) as "DST_IP", l4_dst_port as "DST_PORT", format(SUM(in_bytes),0) as "IN", format(SUM(out_bytes),0) as "OUT" from flowsv4 where INET_NTOA(ip_src_addr) != "192.168.1.151" and INET_NTOA(ip_dst_addr) != "192.168.1.151" and INET_NTOA(ip_dst_addr) LIKE "192.168.1.%" group by l4_dst_port  order by out_bytes desc limit 10;
+SELECT INET_NTOA(ip_src_addr) as "SRC_IP", l4_src_port as "SRC_PORT", INET_NTOA(ip_dst_addr) \
+as "DST_IP", l4_dst_port as "DST_PORT", format(SUM(in_bytes),0) as "IN", format(SUM(out_bytes),0) \
+as "OUT" from flowsv4 where INET_NTOA(ip_src_addr) != "192.168.1.151" and INET_NTOA(ip_dst_addr) \
+!= "192.168.1.151" and INET_NTOA(ip_dst_addr) LIKE "192.168.1.%" group by l4_dst_port  \
+order by out_bytes desc limit 10;
 +--------------+----------+---------------+----------+-------------+----------------+
 | SRC_IP       | SRC_PORT | DST_IP        | DST_PORT | IN          | OUT            |
 +--------------+----------+---------------+----------+-------------+----------------+
