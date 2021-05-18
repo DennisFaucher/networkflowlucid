@@ -137,7 +137,10 @@ LucidChart (and the free Draw.IO) allow the import of CSV files to automatically
 
 ### Get the CSV Import File Ready
 
-After playing with the different LucidChart drawing types that support CSV import (Data Linking, Entity Relationship, Org Chart, Process Diagram, Smart Containers, Sticky Notes), I found that the Process Diagram was the closest to the network flow diagram I was after.
+After playing with the different LucidChart drawing types that support CSV import (Data Linking, Entity Relationship, Org Chart, Process Diagram, Smart Containers, Sticky Notes), I found that the Process Diagram was the closest to the network flow diagram I was after. From LucidChart, create a new diagram, then File > Import Data > Process Diagram > Import Your Data. You will be presented with this dialog box where you can import your CSV or download a CSV template.
+
+![Lucid Import Screen](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/Lucid%20Import%20Screen.png)
+
 
 
 
