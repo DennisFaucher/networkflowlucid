@@ -81,7 +81,7 @@ You can find a copy of my ntopng.conf [file](https://github.com/DennisFaucher/ne
 
 ![SQL Logo](https://github.com/DennisFaucher/networkflowlucid/blob/main/images/SQL.png)
 
-It was time to dust off my rusty SQL skills and to start poking at the MariaDB ntop records to looks for the top flows. After lots of trial and error, this SQL statement gave me what I wanted:
+It was time to dust off my rusty SQL skills and to start poking at the MariaDB ntop records to looks for the top flows. After lots of trial and error, the SQL SELECT statement below gave me what I needed:
 
 ````SQL
 use ntopng;
