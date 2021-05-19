@@ -84,7 +84,31 @@ You can find a copy of my ntopng.conf [file](https://github.com/DennisFaucher/ne
 It was time to dust off my rusty SQL skills and to start poking at the MariaDB ntop records to looks for the top flows. After lots of trial and error, this SQL statement gave me what I wanted:
 
 ````SQL
-use ntopng
+use ntopng;
+
+describe flowsv4;
++----------------------+----------------------+------+-----+---------+----------------+
+| Field                | Type                 | Null | Key | Default | Extra          |
++----------------------+----------------------+------+-----+---------+----------------+
+| idx                  | int(11)              | NO   | MUL | NULL    | auto_increment |
+| VLAN_ID              | smallint(5) unsigned | YES  |     | NULL    |                |
+| L7_PROTO             | smallint(5) unsigned | YES  |     | NULL    |                |
+| IP_SRC_ADDR          | int(10) unsigned     | YES  |     | NULL    |                |
+| L4_SRC_PORT          | smallint(5) unsigned | YES  |     | NULL    |                |
+| IP_DST_ADDR          | int(10) unsigned     | YES  |     | NULL    |                |
+| L4_DST_PORT          | smallint(5) unsigned | YES  |     | NULL    |                |
+| PROTOCOL             | tinyint(3) unsigned  | YES  |     | NULL    |                |
+| IN_BYTES             | int(10) unsigned     | YES  |     | NULL    |                |
+| OUT_BYTES            | int(10) unsigned     | YES  |     | NULL    |                |
+| PACKETS              | int(10) unsigned     | YES  |     | NULL    |                |
+| FIRST_SWITCHED       | int(10) unsigned     | YES  | MUL | NULL    |                |
+| LAST_SWITCHED        | int(10) unsigned     | YES  |     | NULL    |                |
+| INFO                 | varchar(255)         | YES  |     | NULL    |                |
+| JSON                 | blob                 | YES  |     | NULL    |                |
+| NTOPNG_INSTANCE_NAME | varchar(256)         | YES  | MUL | NULL    |                |
+| INTERFACE_ID         | smallint(5)          | YES  |     | NULL    |                |
++----------------------+----------------------+------+-----+---------+----------------+
+
 SELECT INET_NTOA(ip_src_addr) as "SRC_IP", l4_src_port as "SRC_PORT", INET_NTOA(ip_dst_addr) \
 as "DST_IP", l4_dst_port as "DST_PORT", format(SUM(in_bytes),0) as "IN", format(SUM(out_bytes),0) \
 as "OUT" from flowsv4 where INET_NTOA(ip_src_addr) != "192.168.1.151" and INET_NTOA(ip_dst_addr) \
